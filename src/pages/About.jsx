@@ -21,20 +21,21 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative bg-[#050816] text-white px-6 py-32 overflow-hidden">
-
+    <section
+      id="about"
+      className="relative bg-[#050816] text-white px-5 sm:px-6 py-20 sm:py-28 overflow-hidden"
+    >
       {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
 
-      <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-
+      <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         {/* IMAGE */}
         <motion.div
           initial={{ opacity: 0, x: -120 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ amount: 0.4 }}
+          viewport={{ amount: 0.4, once: true }}
           className="flex justify-center"
         >
           <div
@@ -44,10 +45,16 @@ export default function About() {
               transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
               transition: "transform 0.15s ease",
             }}
-            className="relative w-[360px] h-[500px] rounded-3xl
-                       bg-gradient-to-br from-[#0f172a] to-[#111827]
-                       shadow-[0_0_80px_rgba(34,211,238,0.35)]
-                       overflow-hidden"
+            className="
+              relative
+              w-[280px] h-[380px]
+              sm:w-[320px] sm:h-[450px]
+              md:w-[360px] md:h-[500px]
+              rounded-3xl
+              bg-gradient-to-br from-[#0f172a] to-[#111827]
+              shadow-[0_0_80px_rgba(34,211,238,0.35)]
+              overflow-hidden
+            "
           >
             <img
               src="/images/male.png"
@@ -63,33 +70,38 @@ export default function About() {
           initial={{ opacity: 0, x: 120 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ amount: 0.4 }}
-          className="space-y-8"
+          viewport={{ amount: 0.4, once: true }}
+          className="space-y-6 sm:space-y-8 text-center md:text-left"
         >
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             About <span className="text-cyan-400">Me</span>
           </h2>
 
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-gray-300 text-[15px] sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
             I'm a Full Stack Java Developer building scalable backend
             architectures and immersive frontend experiences.
           </p>
 
-          <p className="text-gray-400 leading-relaxed">
-            I specialize in Spring Boot, REST APIs, React, and modern
-            UI systems. I care about performance, security, and
-            writing maintainable production-ready code.
+          <p className="text-gray-400 text-[14.5px] sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
+            I specialize in Spring Boot, REST APIs, React, and modern UI systems.
+            I care about performance, security, and writing maintainable
+            production-ready code.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-7 py-3 rounded-full bg-cyan-500
-                       text-black font-semibold
-                       shadow-lg shadow-cyan-500/40"
-          >
-            Let’s Build Something 🚀
-          </motion.button>
+          <div className="flex justify-center md:justify-start">
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                px-7 py-3 rounded-full bg-cyan-500
+                text-black font-semibold
+                shadow-lg shadow-cyan-500/40
+                text-[15px]
+              "
+            >
+              Let’s Build Something 🚀
+            </motion.button>
+          </div>
         </motion.div>
       </div>
     </section>

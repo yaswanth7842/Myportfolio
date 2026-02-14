@@ -11,7 +11,7 @@ export default function Projects() {
       {/* ================= PROJECTS SECTION ================= */}
       <motion.section
         id="projects"
-        className="py-20 px-6 bg-[#050816] text-white"
+        className="py-16 sm:py-20 px-5 sm:px-6 bg-[#050816] text-white"
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -19,19 +19,21 @@ export default function Projects() {
       >
         <div className="max-w-6xl mx-auto">
           {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold">
               Featured <span className="text-cyan-400">Projects</span>
             </h2>
-            <div className="w-20 h-[2px] mx-auto mt-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+
+            <div className="w-16 sm:w-20 h-[2px] mx-auto mt-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-[14px] sm:text-base leading-relaxed">
               A curated collection of full-stack projects demonstrating modern,
               scalable web applications.
             </p>
           </div>
 
-          {/* ✅ 2x2 GRID – FIX FOR 4 PROJECTS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
             {ProjectsData.map((p, i) => (
               <motion.div
                 key={p.id}
@@ -43,7 +45,7 @@ export default function Projects() {
                 className="flex flex-col bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
               >
                 {/* Image */}
-                <div className="h-56 overflow-hidden">
+                <div className="h-44 sm:h-56 overflow-hidden">
                   <img
                     src={p.image}
                     alt={p.title}
@@ -52,10 +54,12 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                  <h3 className="text-[17px] sm:text-lg font-semibold mb-2 leading-snug">
+                    {p.title}
+                  </h3>
 
-                  <p className="text-sm text-gray-400 mb-4 flex-1">
+                  <p className="text-[13.5px] sm:text-sm text-gray-400 mb-4 flex-1 leading-relaxed">
                     {p.description}
                   </p>
 
@@ -64,7 +68,7 @@ export default function Projects() {
                     {p.tech.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="text-xs px-3 py-1 rounded-full bg-cyan-800/30 border border-cyan-400/50 text-cyan-200"
+                        className="text-[11px] sm:text-xs px-3 py-1 rounded-full bg-cyan-800/30 border border-cyan-400/50 text-cyan-200"
                       >
                         {tech}
                       </span>
@@ -74,7 +78,7 @@ export default function Projects() {
                   {/* CTA */}
                   <button
                     onClick={() => setSelectedProject(p)}
-                    className="text-cyan-400 text-sm font-medium hover:underline self-start"
+                    className="text-cyan-400 text-[13px] sm:text-sm font-medium hover:underline self-start"
                   >
                     View Project →
                   </button>
@@ -98,14 +102,16 @@ export default function Projects() {
             transition={{ duration: 0.3 }}
             className="bg-[#0f1629] max-w-5xl w-full rounded-2xl overflow-y-auto max-h-[90vh] border border-white/10 relative"
           >
+            {/* Close */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-6 text-gray-400 hover:text-white text-2xl"
+              className="absolute top-4 sm:top-5 right-4 sm:right-6 text-gray-400 hover:text-white text-2xl"
             >
               ✕
             </button>
 
-            <div className="w-full h-64 md:h-80 overflow-hidden">
+            {/* Hero */}
+            <div className="w-full h-52 sm:h-64 md:h-80 overflow-hidden">
               <img
                 src={selectedProject.image}
                 alt="hero"
@@ -113,26 +119,31 @@ export default function Projects() {
               />
             </div>
 
-            <div className="p-8 space-y-8">
-              <h2 className="text-3xl font-bold text-cyan-400">
+            {/* Content */}
+            <div className="p-5 sm:p-8 space-y-7 sm:space-y-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-400 leading-snug">
                 {selectedProject.title}
               </h2>
 
               <div>
-                <h3 className="text-xl font-semibold mb-2">About</h3>
-                <p className="text-gray-300 leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                  About
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-[14px] sm:text-base">
                   {selectedProject.description}
                 </p>
               </div>
 
               {selectedProject.features?.length > 0 && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Key Features</h3>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
+                    Key Features
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     {selectedProject.features.map((f, i) => (
                       <div
                         key={i}
-                        className="bg-white/5 border border-white/10 rounded-lg p-4"
+                        className="bg-white/5 border border-white/10 rounded-lg p-4 text-[14px] sm:text-base"
                       >
                         {f}
                       </div>
@@ -142,12 +153,14 @@ export default function Projects() {
               )}
 
               <div>
-                <h3 className="text-xl font-semibold mb-2">Tech Stack</h3>
-                <div className="flex flex-wrap gap-3">
+                <h3 className="text-lg sm:text-xl font-semibold mb-3">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {selectedProject.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="px-4 py-2 bg-cyan-500/20 border border-cyan-400 rounded-full text-sm"
+                      className="px-3 sm:px-4 py-2 bg-cyan-500/20 border border-cyan-400 rounded-full text-[12px] sm:text-sm"
                     >
                       {t}
                     </span>
@@ -157,10 +170,12 @@ export default function Projects() {
 
               {selectedProject.gallery?.length > 0 && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">
                     Project Screenshots
                   </h3>
-                  <div className="grid md:grid-cols-3 gap-4">
+
+                  {/* Mobile 2 columns | Desktop 3 columns */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                     {selectedProject.gallery.map((img, i) => (
                       <img
                         key={i}
@@ -185,7 +200,7 @@ export default function Projects() {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-6 right-8 text-white text-3xl"
+            className="absolute top-5 right-6 sm:top-6 sm:right-8 text-white text-3xl"
             onClick={() => setSelectedImage(null)}
           >
             ✕
@@ -197,7 +212,7 @@ export default function Projects() {
             transition={{ duration: 0.25 }}
             src={selectedImage}
             alt="preview"
-            className="max-w-[90%] max-h-[90vh] rounded-xl shadow-2xl"
+            className="max-w-[92%] max-h-[88vh] sm:max-w-[90%] sm:max-h-[90vh] rounded-xl shadow-2xl"
           />
         </div>
       )}

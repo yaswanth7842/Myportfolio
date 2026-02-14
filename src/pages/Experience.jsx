@@ -44,21 +44,25 @@ const ExperienceData = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative bg-[#050816] text-white py-28 px-6 overflow-hidden">
-
-      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
+    <section
+      id="experience"
+      className="relative bg-[#050816] text-white py-20 sm:py-28 px-5 sm:px-6 overflow-hidden"
+    >
+      {/* Glow */}
+      <div className="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500/20 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
 
       <div className="relative max-w-6xl mx-auto">
-
-        <div className="flex justify-center items-center gap-3 mb-20">
-          <MdRocketLaunch className="text-cyan-400 text-3xl" />
-          <h2 className="text-4xl font-bold">
+        {/* HEADING */}
+        <div className="flex justify-center items-center gap-3 mb-12 sm:mb-20">
+          <MdRocketLaunch className="text-cyan-400 text-2xl sm:text-3xl" />
+          <h2 className="text-3xl sm:text-4xl font-bold">
             Project <span className="text-cyan-400">Experience</span>
           </h2>
         </div>
 
-        <div className="space-y-16">
+        {/* CARDS */}
+        <div className="space-y-10 sm:space-y-16">
           {ExperienceData.map((exp, i) => (
             <motion.div
               key={i}
@@ -67,32 +71,45 @@ export default function Experience() {
               transition={{ duration: 0.7, delay: i * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 
-              rounded-2xl p-8
-              hover:border-cyan-400/60
-              hover:shadow-[0_0_40px_rgba(34,211,238,0.35)]
-              transition-all duration-300"
+              className="
+                bg-white/5 backdrop-blur-xl border border-white/10
+                rounded-2xl p-5 sm:p-8
+                hover:border-cyan-400/60
+                hover:shadow-[0_0_40px_rgba(34,211,238,0.35)]
+                transition-all duration-300
+              "
             >
-              <div className="flex justify-between flex-wrap gap-4">
-                <h3 className="text-2xl font-bold">{exp.title}</h3>
-                <span className="px-4 py-1 bg-cyan-400 text-black rounded-full text-xs font-semibold">
+              {/* TITLE + BADGE */}
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                <h3 className="text-xl sm:text-2xl font-bold leading-snug">
+                  {exp.title}
+                </h3>
+
+                <span className="w-fit px-4 py-1 bg-cyan-400 text-black rounded-full text-[11px] sm:text-xs font-semibold">
                   {exp.type}
                 </span>
               </div>
 
-              <p className="text-gray-400 mt-2">{exp.role}</p>
+              {/* ROLE */}
+              <p className="text-gray-400 mt-2 text-[14px] sm:text-base">
+                {exp.role}
+              </p>
 
-              <ul className="mt-4 space-y-2 text-gray-300">
+              {/* HIGHLIGHTS */}
+              <ul className="mt-4 space-y-2 text-gray-300 text-[14.5px] sm:text-base">
                 {exp.highlights.map((h, idx) => (
-                  <li key={idx}>▸ {h}</li>
+                  <li key={idx} className="leading-relaxed">
+                    ▸ {h}
+                  </li>
                 ))}
               </ul>
 
+              {/* TECH STACK */}
               <div className="flex flex-wrap gap-2 mt-6">
                 {exp.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 text-xs bg-black/40 border border-white/10 rounded-full"
+                    className="px-3 py-1 text-[11px] sm:text-xs bg-black/40 border border-white/10 rounded-full"
                   >
                     {t}
                   </span>
