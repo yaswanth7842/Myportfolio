@@ -11,7 +11,7 @@ export default function Navbar() {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
-      setOpen(false); // close menu after click
+      setOpen(false);
     }
   };
 
@@ -66,34 +66,51 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE FULL SCREEN MENU */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.25 }}
-            className="md:hidden absolute top-16 left-0 w-full bg-[#050816]/95 backdrop-blur-xl border-t border-white/10"
+            className="fixed top-0 right-0 h-screen w-full bg-[#050816]/98 backdrop-blur-xl z-[999]"
           >
-            <div className="px-6 py-6 flex flex-col gap-5">
-              {/* Close */}
+            {/* TOP BAR */}
+            <div className="h-16 px-6 flex items-center justify-between border-b border-white/10">
+              <div
+                className="text-white font-bold text-lg cursor-pointer"
+                onClick={() => scrollTo("home")}
+              >
+                Yash<span className="text-cyan-400">™</span>
+              </div>
+
               <button
                 onClick={() => setOpen(false)}
-                className="self-end text-white text-2xl"
+                className="text-white text-3xl"
               >
                 <HiX />
               </button>
+            </div>
 
+            {/* MENU LINKS */}
+            <div className="px-8 py-10 flex flex-col gap-6">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="text-left text-white/80 hover:text-cyan-300 text-base font-medium transition"
+                  className="text-left text-white/85 hover:text-cyan-300 text-xl font-semibold transition"
                 >
                   {item.name}
                 </button>
               ))}
+            </div>
+
+            {/* BOTTOM LINE */}
+            <div className="absolute bottom-8 left-0 w-full flex justify-center">
+              <p className="text-white/40 text-sm">
+                © {new Date().getFullYear()} Yaswanth Portfolio
+              </p>
             </div>
           </motion.div>
         )}

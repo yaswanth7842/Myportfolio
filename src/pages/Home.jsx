@@ -20,11 +20,12 @@ export default function Home() {
       id="home"
       className="relative min-h-screen text-white overflow-hidden bg-[#050816]"
     >
-      {/* RIGHT IMAGE ONLY */}
+      {/* RIGHT IMAGE ONLY (HIDE ON MOBILE) */}
       <div
         ref={profileRef}
         className="
-          absolute right-0 top-0 h-full w-[60%]
+          hidden md:block
+          absolute right-0 top-0 h-full w-[55%]
           bg-no-repeat bg-right bg-cover
         "
         style={{
@@ -40,14 +41,17 @@ export default function Home() {
         }}
       />
 
+      {/* MOBILE BACKGROUND GLOW */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent" />
+
       {/* CONTENT */}
       <motion.div
         style={{ y: yText, opacity: opacityFade }}
-        className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex items-center"
+        className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex items-center justify-center md:justify-start"
       >
-        <div className="max-w-[620px]">
+        <div className="max-w-[620px] text-center md:text-left">
           {/* ROLE */}
-          <p className="text-cyan-400 font-semibold tracking-widest uppercase">
+          <p className="text-cyan-400 font-semibold tracking-widest uppercase text-sm md:text-base">
             Java Full Stack Developer
           </p>
 
@@ -70,12 +74,12 @@ export default function Home() {
           </p>
 
           {/* CTA BUTTONS */}
-          <div className="mt-7 flex gap-4">
+          <div className="mt-7 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a
               href="#contact"
               className="bg-cyan-500 hover:bg-cyan-600
                          text-black font-semibold
-                         px-6 py-3 rounded-md transition"
+                         px-6 py-3 rounded-md transition text-center"
             >
               Hire Me
             </a>
@@ -86,22 +90,24 @@ export default function Home() {
               rel="noopener noreferrer"
               className="border border-cyan-500 text-cyan-400
                          hover:bg-cyan-500 hover:text-black
-                         px-6 py-3 rounded-md font-semibold transition"
+                         px-6 py-3 rounded-md font-semibold transition text-center"
             >
               Let’s Talk
             </a>
           </div>
 
           {/* STATS */}
-          <div className="mt-10 grid grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center md:text-left">
             <div>
               <p className="text-2xl font-bold text-cyan-400">3+</p>
               <p className="text-sm text-gray-400">Full-Stack Projects</p>
             </div>
+
             <div>
               <p className="text-2xl font-bold text-cyan-400">15+</p>
               <p className="text-sm text-gray-400">REST APIs Built</p>
             </div>
+
             <div>
               <p className="text-2xl font-bold text-cyan-400">100%</p>
               <p className="text-sm text-gray-400">Backend Focus</p>
@@ -109,7 +115,7 @@ export default function Home() {
           </div>
 
           {/* SOCIAL LINKS */}
-          <div className="mt-10 flex gap-5">
+          <div className="mt-10 flex gap-5 justify-center md:justify-start">
             <a
               href="https://github.com/yaswanthdevs"
               target="_blank"
